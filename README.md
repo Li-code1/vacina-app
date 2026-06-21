@@ -8,11 +8,19 @@ Plataforma de acompanhamento da jornada de vacinação infantil, desenvolvida co
 
 | Login | Minhas Crianças |
 |---|---|
-| ![Tela de login](screenshots/login.jpg) | ![Lista de crianças](screenshots/criancas.jpg) |
+| ![Tela de login](screenshots/login.jpg) | ![Lista de crianças com saudação](screenshots/criancas.jpg) |
 
 | Histórico vacinal | Campanhas |
 |---|---|
 | ![Histórico vacinal de uma criança](screenshots/historico-vacinal.jpg) | ![Campanhas de vacinação](screenshots/campanhas.jpg) |
+
+| Adicionar criança | Adicionar vacina |
+|---|---|
+| ![Formulário de nova criança](screenshots/adicionar-crianca.jpg) | ![Seleção de vacina do catálogo](screenshots/adicionar-vacina.jpg) |
+
+| Editar/excluir criança | Editar/excluir dose |
+|---|---|
+| ![Menu de opções da criança](screenshots/menu-criancas.jpg) | ![Menu de opções da dose](screenshots/menu-vacinas.jpg) |
 
 
 ## 🎯 Problema e proposta de solução
@@ -80,11 +88,11 @@ Como a aplicação trata dados de saúde de crianças (dados sensíveis, LGPD), 
 
 ## 🚀 Deploy
 
-🔗 Aplicação publicada: [https://vacina-app-murex.vercel.app/]
+🔗 **Aplicação publicada:**
+- Vercel: [vacina-app-murex.vercel.app](https://vacina-app-murex.vercel.app/)
+- Firebase Hosting: [vacina-app-2c83b.web.app](https://vacina-app-2c83b.web.app/)
 
-[https://vacina-app-2c83b.web.app]
-
-O projeto pode ser publicado tanto na Vercel quanto no Firebase Hosting.
+O projeto pode ser publicado tanto na **Vercel** quanto no **Firebase Hosting**.
 
 ### Opção A — Vercel
 O projeto já inclui `vercel.json`, configurado com:
