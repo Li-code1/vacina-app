@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonIcon } from '@ionic/angular/standalone';
 import { DoseStatus } from '../../../models/vaccine.model';
 
 @Component({
   selector: 'app-vaccine-status-badge',
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonIcon],
   template: `
     <span class="status-chip" [ngClass]="cssClass">
       <ion-icon [name]="icon"></ion-icon>

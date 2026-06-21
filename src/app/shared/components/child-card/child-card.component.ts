@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonCard, IonCardContent } from '@ionic/angular/standalone';
 import { Child } from '../../../models/child.model';
 
 @Component({
   selector: 'app-child-card',
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonCard, IonCardContent],
   template: `
     <ion-card button class="child-card" [color]="child.avatarColor">
       <ion-card-content>

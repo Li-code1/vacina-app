@@ -2,14 +2,31 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import {
+  IonContent,
+  IonItem,
+  IonIcon,
+  IonInput,
+  IonButton,
+  IonSpinner,
+} from '@ionic/angular/standalone';
 import { AuthService } from '../../services/auth.service';
 import { ChildService } from '../../services/child.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, IonicModule, RouterLink],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLink,
+    IonContent,
+    IonItem,
+    IonIcon,
+    IonInput,
+    IonButton,
+    IonSpinner,
+  ],
   template: `
     <ion-content [fullscreen]="true" class="auth-content">
       <div class="screen">
@@ -103,7 +120,7 @@ import { ChildService } from '../../services/child.service';
         padding: 20px 18px;
         box-shadow: 0 8px 24px rgba(71, 60, 51, 0.12);
       }
-      .auth-item { --background: #FFFBF0; border-radius: 12px; margin-bottom: 12px; }
+      .auth-item { --background: #fff; --inner-border-width: 0; border: 1px solid #e8ddc8; border-radius: 12px; margin-bottom: 12px; }
       .submit-btn { margin-top: 6px; font-weight: 600; }
       .error { color: #c0594a; font-size: 0.85rem; font-weight: 500; }
       .switch { text-align: center; margin-top: 16px; color: #8a7d72; }

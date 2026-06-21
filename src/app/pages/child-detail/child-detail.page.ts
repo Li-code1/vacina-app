@@ -2,7 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import {
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonBackButton,
+  IonTitle,
+  IonButton,
+  IonIcon,
+  IonContent,
+  IonCard,
+  IonCardContent,
+  IonSegment,
+  IonSegmentButton,
+  IonLabel,
+  IonList,
+  IonItem,
+} from '@ionic/angular/standalone';
 import { Observable, combineLatest, map } from 'rxjs';
 import { Child } from '../../models/child.model';
 import { VaccineDose } from '../../models/vaccine.model';
@@ -13,7 +30,26 @@ import { VaccineStatusBadgeComponent } from '../../shared/components/vaccine-sta
 @Component({
   selector: 'app-child-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule, VaccineStatusBadgeComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    VaccineStatusBadgeComponent,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonBackButton,
+    IonTitle,
+    IonButton,
+    IonIcon,
+    IonContent,
+    IonCard,
+    IonCardContent,
+    IonSegment,
+    IonSegmentButton,
+    IonLabel,
+    IonList,
+    IonItem,
+  ],
   template: `
     <ion-header [translucent]="true">
       <ion-toolbar color="app-orange">

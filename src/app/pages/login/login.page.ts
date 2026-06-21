@@ -2,13 +2,30 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import {
+  IonContent,
+  IonItem,
+  IonIcon,
+  IonInput,
+  IonButton,
+  IonSpinner,
+} from '@ionic/angular/standalone';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, IonicModule, RouterLink],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLink,
+    IonContent,
+    IonItem,
+    IonIcon,
+    IonInput,
+    IonButton,
+    IonSpinner,
+  ],
   template: `
     <ion-content [fullscreen]="true" class="auth-content">
       <div class="screen">
@@ -99,8 +116,9 @@ import { AuthService } from '../../services/auth.service';
         box-shadow: 0 8px 24px rgba(71, 60, 51, 0.12);
       }
       .auth-item {
-        --background: #FFFBF0;
-        --border-color: var(--app-orange);
+        --background: #fff;
+        --inner-border-width: 0;
+        border: 1px solid #e8ddc8;
         border-radius: 12px;
         margin-bottom: 12px;
         --highlight-color-focused: var(--app-orange);

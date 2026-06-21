@@ -1,7 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonButton,
+  IonIcon,
+  IonContent,
+  IonFab,
+  IonFabButton,
+} from '@ionic/angular/standalone';
 import { Observable } from 'rxjs';
 import { Child } from '../../models/child.model';
 import { ChildService } from '../../services/child.service';
@@ -11,7 +22,19 @@ import { ChildCardComponent } from '../../shared/components/child-card/child-car
 @Component({
   selector: 'app-children-list',
   standalone: true,
-  imports: [CommonModule, IonicModule, ChildCardComponent],
+  imports: [
+    CommonModule,
+    ChildCardComponent,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonButton,
+    IonIcon,
+    IonContent,
+    IonFab,
+    IonFabButton,
+  ],
   template: `
     <ion-header [translucent]="true">
       <ion-toolbar color="app-green">

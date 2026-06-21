@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonCard,
+  IonCardContent,
+  IonIcon,
+} from '@ionic/angular/standalone';
 import { Campaign } from '../../models/campaign.model';
 import { CampaignService } from '../../services/campaign.service';
 
 @Component({
   selector: 'app-campaigns',
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [
+    CommonModule,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardContent,
+    IonIcon,
+  ],
   template: `
     <ion-header [translucent]="true">
       <ion-toolbar color="app-yellow">

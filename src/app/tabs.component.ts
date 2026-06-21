@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-tabs',
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
   template: `
     <ion-tabs>
       <ion-tab-bar slot="bottom" color="light">
