@@ -13,7 +13,7 @@ import {
   IonFab,
   IonFabButton,
 } from '@ionic/angular/standalone';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Child } from '../../models/child.model';
 import { ChildService } from '../../services/child.service';
 import { AuthService } from '../../services/auth.service';
@@ -49,6 +49,9 @@ import { ChildCardComponent } from '../../shared/components/child-card/child-car
 
     <ion-content [fullscreen]="true">
       <div class="page-wrap">
+        <p class="greeting" *ngIf="userName$ | async as name">
+          Olá, <strong>{{ name }}</strong> 👋
+        </p>
         <p class="subtitle">
           Acompanhe a jornada de vacinação de cada criança da sua família.
         </p>
@@ -83,6 +86,7 @@ import { ChildCardComponent } from '../../shared/components/child-card/child-car
   styles: [
     `
       .page-wrap { padding: 12px 16px; }
+      .greeting { color: var(--app-brown); margin: 0 0 2px; font-size: 1rem; }
       .subtitle { color: #8a7d72; margin-top: 0; }
       .header-action-btn {
         --border-radius: 50%;
@@ -96,6 +100,7 @@ import { ChildCardComponent } from '../../shared/components/child-card/child-car
 })
 export class ChildrenListPage {
   children$: Observable<Child[]>;
+  userName$: Observable<string | null>;
 
   private colors = ['app-green', 'app-orange', 'app-yellow', 'app-brown'];
 
@@ -106,6 +111,9 @@ export class ChildrenListPage {
     private router: Router,
   ) {
     this.children$ = this.childService.children$;
+    this.userName$ = this.authService.user$.pipe(
+      map((user) => user?.displayName ?? null),
+    );
   }
 
   openChild(child: Child) {
