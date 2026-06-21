@@ -1,0 +1,40 @@
+# Dependências
+/node_modules
+/.pnp
+.pnp.js
+
+# Build de produção
+/www
+/dist
+/out-tsc
+/.angular/cache
+
+# Capacitor / Ionic nativo (caso adicione depois)
+/android
+/ios
+/.capacitor
+
+# Variáveis de ambiente sensíveis (NUNCA suba isso pro GitHub)
+# Se preferir não versionar nem as credenciais do Firebase, descomente as linhas abaixo
+# src/environments/environment.ts
+# src/environments/environment.prod.ts
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor / SO
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Testes / cobertura
+/coverage
+
+# Variáveis de ambiente genéricas
+.env
+.env.local

@@ -1,0 +1,84 @@
+/*
+ * Paleta obrigatória do desafio:
+ * #ABC270 - verde (saúde / em dia)
+ * #FEC868 - amarelo (atenção / a vencer)
+ * #FDA769 - laranja (destaque / ação)
+ * #473C33 - marrom escuro (texto / contraste)
+ */
+
+:root {
+  --app-green: #ABC270;
+  --app-yellow: #FEC868;
+  --app-orange: #FDA769;
+  --app-brown: #473C33;
+
+  --ion-color-primary: #ABC270;
+  --ion-color-primary-rgb: 171, 194, 112;
+  --ion-color-primary-contrast: #473C33;
+  --ion-color-primary-contrast-rgb: 71, 60, 51;
+  --ion-color-primary-shade: #96aa62;
+  --ion-color-primary-tint: #b3c87d;
+
+  --ion-color-secondary: #FDA769;
+  --ion-color-secondary-rgb: 253, 167, 105;
+  --ion-color-secondary-contrast: #473C33;
+  --ion-color-secondary-contrast-rgb: 71, 60, 51;
+  --ion-color-secondary-shade: #df935c;
+  --ion-color-secondary-tint: #fdb077;
+
+  --ion-color-tertiary: #FEC868;
+  --ion-color-tertiary-rgb: 254, 200, 104;
+  --ion-color-tertiary-contrast: #473C33;
+  --ion-color-tertiary-contrast-rgb: 71, 60, 51;
+  --ion-color-tertiary-shade: #e0b05c;
+  --ion-color-tertiary-tint: #fecd77;
+
+  --ion-color-dark: #473C33;
+  --ion-color-dark-rgb: 71, 60, 51;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #3e342d;
+  --ion-color-dark-tint: #594d47;
+
+  --ion-color-success: #ABC270;
+  --ion-color-success-rgb: 171, 194, 112;
+  --ion-color-success-contrast: #473C33;
+  --ion-color-success-contrast-rgb: 71, 60, 51;
+  --ion-color-success-shade: #96aa62;
+  --ion-color-success-tint: #b3c87d;
+
+  --ion-color-warning: #FEC868;
+  --ion-color-warning-rgb: 254, 200, 104;
+  --ion-color-warning-contrast: #473C33;
+  --ion-color-warning-contrast-rgb: 71, 60, 51;
+  --ion-color-warning-shade: #e0b05c;
+  --ion-color-warning-tint: #fecd77;
+
+  --ion-color-danger: #c0594a;
+  --ion-color-danger-rgb: 192, 89, 74;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #a94e41;
+  --ion-color-danger-tint: #c76a5c;
+
+  --ion-background-color: #FFFBF0;
+  --ion-text-color: #473C33;
+  --ion-font-family: 'Poppins', -apple-system, sans-serif;
+}
+
+.ion-color-app-green {
+  --ion-color-base: var(--app-green);
+  --ion-color-contrast: var(--app-brown);
+}
+.ion-color-app-yellow {
+  --ion-color-base: var(--app-yellow);
+  --ion-color-contrast: var(--app-brown);
+}
+.ion-color-app-orange {
+  --ion-color-base: var(--app-orange);
+  --ion-color-contrast: var(--app-brown);
+}
+.ion-color-app-brown {
+  --ion-color-base: var(--app-brown);
+  --ion-color-contrast: #ffffff;
+}

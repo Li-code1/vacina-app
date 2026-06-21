@@ -1,0 +1,31 @@
+@import "@ionic/angular/css/ionic-swiper";
+
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.section-title {
+  font-weight: 600;
+  color: var(--app-brown);
+  margin: 16px 0 8px 4px;
+}
+
+.status-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.status-chip.ok { background: var(--app-green); color: var(--app-brown); }
+.status-chip.due-soon { background: var(--app-yellow); color: var(--app-brown); }
+.status-chip.late { background: #c0594a; color: #fff; }
+.status-chip.scheduled { background: var(--app-orange); color: var(--app-brown); }
+
+.empty-state {
+  text-align: center;
+  color: #8a7d72;
+  padding: 32px 16px;
+}

@@ -1,0 +1,5 @@
+{
+  "name": "vacina-app",
+  "integrations": { "capacitor": {} },
+  "type": "angular"
+}
