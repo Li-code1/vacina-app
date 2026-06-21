@@ -59,7 +59,7 @@ import { ChildCardComponent } from '../../shared/components/child-card/child-car
         <ng-container *ngIf="children$ | async as children">
           <div *ngIf="children.length; else empty">
             <app-child-card
-              *ngFor="let child of children"
+              *ngFor="let child of children; trackBy: trackByChildId"
               [child]="child"
               (click)="openChild(child)"
               (optionsClick)="openChildOptions(child)"
@@ -118,6 +118,10 @@ export class ChildrenListPage {
 
   openChild(child: Child) {
     this.router.navigate(['/children', child.id]);
+  }
+
+  trackByChildId(_index: number, child: Child): string {
+    return child.id;
   }
 
   async openAddChild() {
