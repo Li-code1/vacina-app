@@ -59,6 +59,7 @@ import { ChildCardComponent } from '../../shared/components/child-card/child-car
               *ngFor="let child of children"
               [child]="child"
               (click)="openChild(child)"
+              (optionsClick)="openChildOptions(child)"
             ></app-child-card>
           </div>
 
@@ -127,6 +128,60 @@ export class ChildrenListPage {
             const color = this.colors[Math.floor(Math.random() * this.colors.length)];
             await this.childService.addChild(data.name, new Date(data.birthDate), color);
             return true;
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+  async openChildOptions(child: Child) {
+    const alert = await this.alertCtrl.create({
+      header: child.name,
+      message: 'O que você quer fazer?',
+      buttons: [
+        { text: 'Cancelar', role: 'cancel' },
+        { text: 'Excluir', role: 'destructive', handler: () => this.confirmDeleteChild(child) },
+        { text: 'Editar', handler: () => this.editChild(child) },
+      ],
+    });
+    await alert.present();
+  }
+
+  async editChild(child: Child) {
+    const dateStr = child.birthDate.toISOString().slice(0, 10);
+    const alert = await this.alertCtrl.create({
+      header: 'Editar criança',
+      inputs: [
+        { name: 'name', type: 'text', placeholder: 'Nome completo', value: child.name },
+        { name: 'birthDate', type: 'date', placeholder: 'Data de nascimento', value: dateStr },
+      ],
+      buttons: [
+        { text: 'Cancelar', role: 'cancel' },
+        {
+          text: 'Salvar',
+          handler: async (data) => {
+            if (!data.name || !data.birthDate) return false;
+            await this.childService.updateChild(child.id, data.name, new Date(data.birthDate));
+            return true;
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+  async confirmDeleteChild(child: Child) {
+    const alert = await this.alertCtrl.create({
+      header: 'Excluir criança',
+      message: `Tem certeza que deseja excluir "${child.name}"? Todas as doses cadastradas também serão excluídas. Essa ação não pode ser desfeita.`,
+      buttons: [
+        { text: 'Cancelar', role: 'cancel' },
+        {
+          text: 'Excluir',
+          role: 'destructive',
+          handler: async () => {
+            await this.childService.deleteChild(child.id);
           },
         },
       ],

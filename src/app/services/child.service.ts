@@ -6,6 +6,7 @@ import {
   doc,
   addDoc,
   updateDoc,
+  deleteDoc,
   query,
   where,
   Timestamp,
@@ -79,6 +80,19 @@ export class ChildService {
     return ref.id;
   }
 
+  async updateChild(childId: string, name: string, birthDate: Date): Promise<void> {
+    const childRef = doc(this.firestore, `children/${childId}`);
+    await updateDoc(childRef, { name, birthDate: Timestamp.fromDate(birthDate) });
+  }
+
+  /** Remove a criança e todas as doses cadastradas dela (sub-coleção não é excluída em cascata pelo Firestore). */
+  async deleteChild(childId: string): Promise<void> {
+    const dosesRef = collection(this.firestore, `children/${childId}/doses`);
+    const dosesSnapshot = await getDocs(dosesRef);
+    await Promise.all(dosesSnapshot.docs.map((d) => deleteDoc(d.ref)));
+    await deleteDoc(doc(this.firestore, `children/${childId}`));
+  }
+
   async addDose(
     childId: string,
     vaccineId: string,
@@ -108,6 +122,21 @@ export class ChildService {
   async unapplyDose(childId: string, doseId: string): Promise<void> {
     const doseRef = doc(this.firestore, `children/${childId}/doses/${doseId}`);
     await updateDoc(doseRef, { appliedDate: null });
+  }
+
+  async updateDose(
+    childId: string,
+    doseId: string,
+    doseLabel: string,
+    expectedDate: Date,
+  ): Promise<void> {
+    const doseRef = doc(this.firestore, `children/${childId}/doses/${doseId}`);
+    await updateDoc(doseRef, { doseLabel, expectedDate: Timestamp.fromDate(expectedDate) });
+  }
+
+  async deleteDose(childId: string, doseId: string): Promise<void> {
+    const doseRef = doc(this.firestore, `children/${childId}/doses/${doseId}`);
+    await deleteDoc(doseRef);
   }
 
   /**

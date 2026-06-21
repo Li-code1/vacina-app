@@ -21,6 +21,9 @@ import {
   lockClosedOutline,
   personOutline,
   logOutOutline,
+  ellipsisVerticalOutline,
+  createOutline,
+  trashOutline,
 } from 'ionicons/icons';
 
 import { AppComponent } from './app/app.component';
@@ -43,6 +46,9 @@ addIcons({
   'lock-closed-outline': lockClosedOutline,
   'person-outline': personOutline,
   'log-out-outline': logOutOutline,
+  'ellipsis-vertical-outline': ellipsisVerticalOutline,
+  'create-outline': createOutline,
+  'trash-outline': trashOutline,
 });
 
 bootstrapApplication(AppComponent, {

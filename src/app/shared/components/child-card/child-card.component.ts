@@ -1,12 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonCard, IonCardContent } from '@ionic/angular/standalone';
+import { IonCard, IonCardContent, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { Child } from '../../../models/child.model';
 
 @Component({
   selector: 'app-child-card',
   standalone: true,
-  imports: [CommonModule, IonCard, IonCardContent],
+  imports: [CommonModule, IonCard, IonCardContent, IonButton, IonIcon],
   template: `
     <ion-card button class="child-card" [color]="child.avatarColor">
       <ion-card-content>
@@ -24,6 +24,9 @@ import { Child } from '../../../models/child.model';
           >
             {{ statusText }}
           </span>
+          <ion-button fill="clear" class="options-btn" (click)="onOptionsClick($event)">
+            <ion-icon name="ellipsis-vertical-outline" slot="icon-only"></ion-icon>
+          </ion-button>
         </div>
         <div class="progress">
           <div class="bar">
@@ -51,11 +54,18 @@ import { Child } from '../../../models/child.model';
       .bar { height: 6px; border-radius: 3px; background: #eee2cf; overflow: hidden; }
       .fill { height: 100%; background: var(--app-green); }
       .progress span { font-size: 0.75rem; color: #8a7d72; }
+      .options-btn {
+        --padding-start: 4px;
+        --padding-end: 4px;
+        margin: 0;
+        color: var(--app-brown);
+      }
     `,
   ],
 })
 export class ChildCardComponent {
   @Input({ required: true }) child!: Child;
+  @Output() optionsClick = new EventEmitter<void>();
 
   get initials(): string {
     return this.child.name
@@ -79,5 +89,10 @@ export class ChildCardComponent {
       default:
         return 'Em dia';
     }
+  }
+
+  onOptionsClick(event: Event) {
+    event.stopPropagation();
+    this.optionsClick.emit();
   }
 }

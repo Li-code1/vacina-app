@@ -1,6 +1,6 @@
 # VacinaJá 💉👶
 
-> 🧪 **Para avaliar o projeto:** acesse o link publicado (ou rode localmente), clique em **"Cadastre-se"** e crie uma conta com um e-mail e senha (precisa ser um e-mail real, pois precisa confirmar o cadastro). Ao concluir, **duas crianças de exemplo já são criadas automaticamente** (Sofia e Lucas), com vacinas em diferentes situações — em dia, atrasada e próxima do vencimento — prontas para explorar todas as telas e funcionalidades sem precisar cadastrar nada manualmente. Não há necessidade de compartilhar nenhuma credencial: cada avaliador pode criar a própria conta.
+> 🧪 **Para avaliar o projeto:** acesse o link publicado (ou rode localmente), clique em **"Cadastre-se"** e crie uma conta com qualquer e-mail e senha (não precisa ser um e-mail real nem confirmar o cadastro). Ao concluir, **duas crianças de exemplo já são criadas automaticamente** (Sofia e Lucas), com vacinas em diferentes situações — em dia, atrasada e próxima do vencimento — prontas para explorar todas as telas e funcionalidades sem precisar cadastrar nada manualmente. Não há necessidade de compartilhar nenhuma credencial: cada avaliador pode criar a própria conta.
 
 Plataforma de acompanhamento da jornada de vacinação infantil, desenvolvida como solução para o desafio de estágio. Construída com **Ionic Framework + Angular** (standalone components).
 
@@ -75,15 +75,16 @@ Como a aplicação trata dados de saúde de crianças (dados sensíveis, LGPD), 
 > - **Confirmação antes de marcar como aplicada**: evita toques acidentais — o app pede para confirmar a vacina e a data antes de gravar.
 > - **Desfazer marcação**: tocando na badge "Aplicada", o responsável pode reverter uma marcação feita por engano, voltando a dose para pendente.
 > - **Limite reconhecido**: como qualquer sistema autodeclarado (igual a carteira física), não há como o app *garantir* que a vacina foi realmente aplicada — isso depende da boa-fé do responsável. O que o app pode (e faz) é reduzir erros acidentais com confirmação explícita e permitir correção a qualquer momento.
+> - **Editar/excluir criança e dose**: toque nos três pontinhos (⋮) no card da criança ou em qualquer dose para editar os dados ou excluir (com confirmação). Excluir uma criança remove também todas as doses associadas a ela.
 > - **Duas crianças de exemplo são criadas automaticamente** ao concluir o cadastro (Sofia e Lucas), já com vacinas em situações diferentes — em dia, atrasada e próxima do vencimento — para que o responsável entenda como o app funciona antes de cadastrar os próprios filhos.
 
 ## 🚀 Deploy
 
-🔗 **Aplicação publicada:** _[https://vacina-app-murex.vercel.app/]_
+🔗 Aplicação publicada: [https://vacina-app-murex.vercel.app/]
 
-   _[https://vacina-app-2c83b.web.app]_
+[https://vacina-app-2c83b.web.app]
 
-O projeto pode ser publicado tanto na **Vercel** quanto no **Firebase Hosting**.
+O projeto pode ser publicado tanto na Vercel quanto no Firebase Hosting.
 
 ### Opção A — Vercel
 O projeto já inclui `vercel.json`, configurado com:
@@ -139,7 +140,6 @@ Acesse `http://localhost:4200`.
 
 ## 🔮 Próximos passos (não implementados)
 
-- Edição/exclusão de crianças e doses já cadastradas
 - Notificações push para vacinas próximas do vencimento
 - Upload de foto da carteirinha física (OCR para preencher doses automaticamente)
 - Integração com sistemas oficiais de saúde (ex: e-SUS, RNDS) para confirmação oficial de aplicação de vacina

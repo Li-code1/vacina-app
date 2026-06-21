@@ -125,6 +125,9 @@ import { VaccineStatusBadgeComponent } from '../../shared/components/vaccine-sta
                 slot="end"
                 [status]="dose.getStatus()"
               ></app-vaccine-status-badge>
+              <ion-button slot="end" fill="clear" size="small" (click)="openDoseOptions(child.id, dose)">
+                <ion-icon name="ellipsis-vertical-outline" slot="icon-only"></ion-icon>
+              </ion-button>
             </ion-item>
           </ion-list>
         </div>
@@ -229,6 +232,69 @@ export class ChildDetailPage implements OnInit {
           role: 'destructive',
           handler: async () => {
             await this.childService.unapplyDose(childId, dose.id);
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+  async openDoseOptions(childId: string, dose: VaccineDose) {
+    const alert = await this.alertCtrl.create({
+      header: `${this.vaccineName(dose)} — ${dose.doseLabel}`,
+      message: 'O que você quer fazer?',
+      buttons: [
+        { text: 'Cancelar', role: 'cancel' },
+        {
+          text: 'Excluir',
+          role: 'destructive',
+          handler: () => this.confirmDeleteDose(childId, dose),
+        },
+        { text: 'Editar', handler: () => this.editDose(childId, dose) },
+      ],
+    });
+    await alert.present();
+  }
+
+  async editDose(childId: string, dose: VaccineDose) {
+    const dateStr = dose.expectedDate.toISOString().slice(0, 10);
+    const alert = await this.alertCtrl.create({
+      header: 'Editar dose',
+      inputs: [
+        { name: 'doseLabel', type: 'text', placeholder: 'Rótulo da dose', value: dose.doseLabel },
+        { name: 'expectedDate', type: 'date', placeholder: 'Data prevista', value: dateStr },
+      ],
+      buttons: [
+        { text: 'Cancelar', role: 'cancel' },
+        {
+          text: 'Salvar',
+          handler: async (data) => {
+            if (!data.doseLabel || !data.expectedDate) return false;
+            await this.childService.updateDose(
+              childId,
+              dose.id,
+              data.doseLabel,
+              new Date(data.expectedDate),
+            );
+            return true;
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+  async confirmDeleteDose(childId: string, dose: VaccineDose) {
+    const alert = await this.alertCtrl.create({
+      header: 'Excluir dose',
+      message: `Tem certeza que deseja excluir "${dose.doseLabel}" de ${this.vaccineName(dose)}? Essa ação não pode ser desfeita.`,
+      buttons: [
+        { text: 'Cancelar', role: 'cancel' },
+        {
+          text: 'Excluir',
+          role: 'destructive',
+          handler: async () => {
+            await this.childService.deleteDose(childId, dose.id);
           },
         },
       ],
