@@ -12,8 +12,13 @@ service cloud.firestore {
 
     // Coleção "children": cada documento tem um campo ownerId = uid do responsável.
     match /children/{childId} {
-      allow read, update, delete: if isOwner(resource.data.ownerId);
+      allow read, delete: if isOwner(resource.data.ownerId);
       allow create: if isSignedIn() && request.resource.data.ownerId == request.auth.uid;
+
+      // Update: além de ser o dono, o campo ownerId não pode ser trocado
+      // na própria atualização (impede "transferir" a criança pra outro uid).
+      allow update: if isOwner(resource.data.ownerId)
+                    && request.resource.data.ownerId == resource.data.ownerId;
 
       // Sub-coleção "doses": herda a permissão verificando o documento pai.
       match /doses/{doseId} {
